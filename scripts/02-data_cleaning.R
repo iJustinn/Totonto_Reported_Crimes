@@ -50,3 +50,32 @@ write_csv(
 )
 
 
+
+#### Summarize data ####
+# read the cleaned_data
+cleaned_data <- read_csv("outputs/data/cleaned_data.csv")
+
+# summarize data by year, for easier work when visualizing
+sum_by_year_data <- cleaned_data |>
+  group_by(report_year) |>
+  summarise(total_cases = sum(total_case))
+
+# summarize data by division, for easier work when visualizing
+sum_by_division_data <- cleaned_data |>
+  group_by(division) |>
+  summarise(total_cases = sum(total_case))
+
+
+
+#### Save data ####
+write_csv(
+  x = sum_by_year_data,
+  file = "outputs/data/sum_by_year_data.csv"
+)
+
+write_csv(
+  x = sum_by_division_data,
+  file = "outputs/data/sum_by_division_data.csv"
+)
+
+
