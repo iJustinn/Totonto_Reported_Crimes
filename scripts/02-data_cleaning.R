@@ -6,15 +6,47 @@
 # License: MIT
 # Pre-requisites: none
 
+
+
 #### Workspace setup ####
+library(opendatatoronto)
 library(tidyverse)
+library(janitor)
+library(dplyr)
+library(readr)
+
+
 
 #### Clean data ####
-raw_data <- read_csv("inputs/data/plane_data.csv")
+# read the raw_data, ready for cleaning
+raw_data <- read_csv("inputs/data/raw_data.csv")
 
+# clean the names of columns
 cleaned_data <-
-  raw_data |>
+  clean_names(raw_data)
+
+# select columns we actually need
+cleaned_data <-
+  cleaned_data |>
+  select(
+    report_year,
+    division,
+    count
+  )
+
+# rename some columns for better readability
+cleaned_data <-
+  cleaned_data |>
+  rename(
+    total_case = count
+  )
+
 
 
 #### Save data ####
-write_csv(cleaned_data, "outputs/data/analysis_data.csv")
+write_csv(
+  x = cleaned_data,
+  file = "outputs/data/cleaned_data.csv"
+)
+
+
