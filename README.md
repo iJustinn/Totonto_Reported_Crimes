@@ -16,6 +16,6 @@ The files of this research is organized in following ways:
 
 -   `outputs/data`: data sources used in the visualization including cleaned_data, sum_by_division_data and sum_by_year_data
 
--   `outputs/paper`: files used to generate the paper, including Quarto and bibliography file and the research paper
+-   `outputs/paper`: files used to generate the paper including Quarto and bibliography file and the research paper
 
 -   `scripts`: R code used to download data, analyze data and visualize data
