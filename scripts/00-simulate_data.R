@@ -1,18 +1,34 @@
 #### Preamble ####
-# Purpose: Simulates... [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: 
+# Author: Ziheng Zhong
+# Date: 18 January 2024
+# Contact: ziheng.zhong@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Pre-requisites: none
+
 
 
 #### Workspace setup ####
+library(opendatatoronto)
 library(tidyverse)
-# [...UPDATE THIS...]
+library(janitor)
+library(dplyr)
+library(readr)
+
+
 
 #### Simulate data ####
-# [...ADD CODE HERE...]
+# Set parameters for simulation
+crime_rate <- 0.02915
+population <- 100000  # Example population, adjust as needed
+start_year <- 2014
+end_year <- 2022
+
+# Create and simulate total cases for each year
+simulated_data <- data.frame(report_year = start_year:end_year) |>
+  mutate(total_cases = round(population * crime_rate))
+
+# View the simulated data
+print(simulated_data)
 
 
