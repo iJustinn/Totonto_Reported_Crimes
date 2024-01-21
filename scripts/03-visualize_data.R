@@ -9,6 +9,7 @@
 
 
 #### Workspace setup ####
+# setup all libraries
 library(opendatatoronto)
 library(tidyverse)
 library(ggplot2)
@@ -19,10 +20,10 @@ library(readr)
 
 
 #### Visualize data ####
-# read in the sum_by_year_data to work on
+# read the sum_by_year_data, ready for generating bar chart
 sum_by_year_data <- read_csv("outputs/data/sum_by_year_data.csv")
 
-# create the bar chart for total cases by year
+# create the bar chart with y-axis showing total cases in the year and x-axis showing the year number
 ggplot(sum_by_year_data, aes(x = report_year, y = total_cases)) +
   scale_x_continuous(breaks = sum_by_year_data$report_year) +
   geom_bar(stat = "identity", fill = "darkgrey") +
@@ -32,10 +33,10 @@ ggplot(sum_by_year_data, aes(x = report_year, y = total_cases)) +
        y = "Total Cases") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
-# read the summarized data by division
+# read the sum_by_year_data, ready for generating bar chart
 sum_by_division_data <- read_csv("outputs/data/sum_by_division_data.csv")
 
-# create the bar chart for 2014
+# create the bar chart with y-axis showing total cases in the division and x-axis showing the division number
 ggplot(sum_by_division_data, aes(x = division, y = total_cases, fill = division)) +
   #geom_bar(stat = "identity", position = position_dodge()) +
   geom_bar(stat = "identity", fill = "darkgrey") +
