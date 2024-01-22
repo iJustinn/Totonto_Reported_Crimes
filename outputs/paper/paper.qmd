@@ -42,11 +42,11 @@ sum_by_division_data <- read_csv(here::here("outputs/data/sum_by_division_data.c
 
 # Introduction
 
-Public safety, as one of the most important factors to ensure a high quality life for people, is an important aspect that requires continuous evaluation and enforcement. The city of Toronto, as one of the place with most population in Canada, is not an exception to the challenges posed by crimes. This paper takes a deep dive into the extensive reported crime data provided by Open Data Toronto[@citeODT], covering the period from 2014 to 2022. The analysis is grounded in a methodical approach to identify and interpret crime trends across the past years, also within the city's diverse police divisions, offering a detailed chronicle of criminal activity over selected time span. To be more specific, this research analyzed and visualized how crime spreads out across different divisions and how it changes over the years. By dissecting the data year by year, division by division, this study uncovers patterns that could inform future urban planning and law enforcement strategies. The role of population growth, natural diseases and urban development, are considered as potential catalysts influencing these patterns.
+Public safety, as one of the most important factors in ensuring a high-quality life for people, is an important aspect that requires continuous evaluation and enforcement. The city of Toronto, as one of the places with the largest population in Canada, is not an exception to the challenges posed by crimes. This paper takes a deep dive into the extensive reported crime data provided by Open Data Toronto[@citeODT], covering the period from 2014 to 2022. The analysis is grounded in a methodical approach to identify and interpret crime trends across the past years, also within the city's diverse police divisions, offering a detailed chronicle of criminal activity over a selected time span. To be more specific, this research analyzed and visualized how crime spreads out across different divisions and how it changes over the years. By dissecting the data year by year, division by division, this study uncovers patterns that could inform future urban planning and law enforcement strategies. The role of population growth, natural diseases, and urban development, are considered potential catalysts influencing these patterns.
 
 Moreover, the paper aims to a little beyond simply displaying statistics. It endeavors to contextualize the numerical findings within the broader spectrum of Toronto's urban structure. The motivation for this discussion is that changes in crime rates are often associated with changes in other indicators of the city, such as education level[@citeEdu], unemployment rate[@citeUnemp], economic level[@citeEcon], and so on. By doing this, the study aims to offer useful advice that can help city officials and the police create plans to make the city safer and better for all residents. Through these ways, the paper is not just an exposition of data, but a roadmap towards a better living environment.
 
-The subsequent sections of this paper are organized to facilitate a comprehensive understanding of the study and its implications. Following this introduction, @sec-2 outlines the methodology employed in the analysis, ensuring transparency and replicability. @sec-3 presents the findings in detail, charting the trends in reported crimes over time and across Toronto's police divisions. also discusses these findings in other aspects such as: infrastructure construction, structure of the city, etc. Finally, @sec-4 concludes the paper, summarizing the key insights and finding in this research.
+The subsequent sections of this paper are organized to facilitate a comprehensive understanding of the study and its implications. Following this introduction, @sec-2 outlines the methodology employed in the analysis, ensuring transparency and replicability. @sec-3 presents the findings in detail, charting the trends in reported crimes over time and across Toronto's police divisions. also discusses these findings in other aspects such as infrastructure construction, structure of the city, etc. Finally, @sec-4 concludes the paper, summarizing the key insights and findings in this research.
 
 
 
@@ -88,7 +88,7 @@ head (cleaned_data, 6) |>
   )
 ```
 
-The raw data set, first few lines shown in @tbl-raw_data, contains more than 30000 reported crime cases of Toronto from 2014 to 2022 in all police divisions, including reported crime types, case status, case id, etc. Since this research does not need that much information, thus the data was cleaned as needed. Now the cleaned data only shows the number of reported crimes cases in corresponding years and the police division each case reported to. The first few lines of the cleaned data was shown in the @tbl-cleaned_data.
+The raw data set, first few lines shown in @tbl-raw_data, contains more than 30000 reported crime cases in Toronto from 2014 to 2022 in all police divisions, including reported crime types, case status, case ID, etc. Since this research does not need that much information, thus the data was cleaned as needed. Now the cleaned data only shows the number of reported crime cases in corresponding years and the police division to each case was reported. The first few lines of the cleaned data were shown in the @tbl-cleaned_data.
 
 ### Further Data Processing
 
@@ -107,7 +107,7 @@ head (sum_by_year_data, 6) |>
   )
 ```
 
-As mentioned earlier, this paper will first analyze the trends of reported crimes in different years. Therefore, the first further processed data will add up all data from different policy divisions in each year to form a total number of reported crimes for specific year. The head of these data was shown in @tbl-by_year_data.
+As mentioned earlier, this paper will first analyze the trends of reported crimes in different years. Therefore, the first further processed data will add up all data from different policy divisions in each year to form a total number of reported crimes for a specific year. The head of these data was shown in @tbl-by_year_data.
 
 ```{r}
 #| message: false
@@ -122,7 +122,7 @@ head (sum_by_division_data, 6) |>
   )
 ```
 
-Then, this paper will analyze the total number of reported crimes received for different policy divisions disregard of the year. Therefore, the process of this data ignore the year and add up all the data received by each policy division in the cleaned data set to form the data set shown in @tbl-by_division_data.
+Then, this paper will analyze the total number of reported crimes received for different policy divisions disregard of the year. Therefore, the process of this data ignores the year and adds up all the data received by each policy division in the cleaned data set to form the data set shown in @tbl-by_division_data.
 
 
 
@@ -130,7 +130,7 @@ Then, this paper will analyze the total number of reported crimes received for d
 
 ## Across years
 ```{r}
-#| label: by_year_chart
+#| label: fig-by_year
 #| fig-cap: 2014 to 2022 Toronto Total Reported Crime Cases by Year
 #| echo: false
 
@@ -144,11 +144,19 @@ ggplot(sum_by_year_data, aes(x = report_year, y = total_cases)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
+As the bar chart (@fig-by_year) displayed, the total reported crime cases in Toronto for each year from 2014 to 2022. From a visual inspection, the following trend can be observed: starting in 2014, there appears to be a relatively steady or slight increase in the number of cases, reaching a peak around 2017 and 2018. After this peak, there is a major decreasing in the number of reported crime cases, with almost no trend up to 2021.
 
+Notably, there are two significant drop in the total reported crime cases in 2020 and 2022 compared to their previous years. These declines could be of particular interest and worth further investigation to understand the underlying factors contributing to this change.
+
+The drop in 2020 has a more obvious reason. Starting from the end of the year in 2019[@citeCovidTimeline], people around the world have started on a period of over two years of the pandemic. Public health measures such as lockdowns, physical distancing, and restrictions on gatherings have drastically changed social behaviors and daily activities. This unprecedented situation has had a ripple effect across various sectors, including the realm of public safety and crime.
+
+As communities went into isolation and businesses temporarily closed or shifted to remote operations, the opportunities for certain types of crimes, like burglaries and thefts in commercial areas, may have diminished[@citeDecreaseCrime]. Conversely, there have been concerns about the potential rise in domestic incidents and cybercrimes as more people stayed home and activities moved online.
+
+The impact of the pandemic on mental health[@citeCovidMental], due to prolonged social isolation and economic stressors, could also not be understated. These factors have influenced community dynamics and possibly crime patterns[@citeMentalCrime]. Law enforcement agencies and social services have had to adapt to these changes, sometimes shifting their focus to community support and online safety initiatives. The extended period of the pandemic has also challenged traditional crime prevention and response strategies, prompting a reevaluation of resource allocation and policing methods.
 
 ## Across divisions
 ```{r}
-#| label: by_division_chart
+#| label: fig-by_division
 #| fig-cap: 2014 to 2022 Toronto Total Reported Crime Cases by Division
 #| echo: false
 
@@ -162,15 +170,18 @@ ggplot(sum_by_division_data, aes(x = division, y = total_cases, fill = division)
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
+The bar chart (@fig-by_division) depicts the total reported crime cases in Toronto by police division from 2014 to 2022. Focusing on some specific divisions, some patterns may be concluded. The map[@citeDivisionMap] produced by TPS, Toronto Police Service, downtown Toronto (divisions 51) shows a significant number of reported cases, with Division 51 notably having one of the highest total crime cases counts on the entire chart, which can be strong evidence of the relation between the high density and activity levels in downtown areas and the crime rates[@citeDensityCrime].
+
+Not only in downtown Toronto but also in some of the areas where large shopping malls are located (North York, division 32), the total crime cases also exceeded other divisions by a significant amount. Moreover, other divisions with signs of high population density also show a high number of crime cases such as Division 52 (CN tower and Scotiabank Arena located), division 14 (numerous train stations), etc.
+
+Conversely, Scarborough, division 43, while still manifesting a sizeable aggregate of cases, doesn't reach the level of numbers observed in divisions discussed above, possibly mirroring the majority of its house type and development situation. This again suggests that population density can influence crime rates[@citeDensityCrime]. While other factors such as socioeconomic status, community engagement, and policing strategies also play crucial roles, we need more information to assess further.
 
 # Conclusion {#sec-4}
 
-## General
+In conclusion, this paper reflects on the significant findings from the analysis of reported crime data in Toronto between 2014 and 2022. The data revealed fluctuating crime rates, with notable peaks and troughs corresponding to various factors and events, most prominently the COVID-19 pandemic. This period notably saw changes in crime patterns due to altered social behaviors and policing strategies. The analysis across police divisions highlighted the impact of population density and development level on crime distribution. By leveraging detailed crime data, Toronto can continue to enhance its urban safety strategies, aiming for a city that is not only safer but also more equitable and responsive to the needs of its swiftly growing population[@citePopulation].
 
 
 
-## Other aspects
-
-
+# Bibliography
 
 
