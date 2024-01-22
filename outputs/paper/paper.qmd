@@ -1,13 +1,12 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: "Toronto's continuously growth reported crime cases in past years."
+subtitle: "An Analysis of Toronto's reported crime from 2014 to 2022"
 author: 
-  - First author
-  - Another author
-thanks: "Code and data are available at: LINK."
+  - Ziheng Zhong
+thanks: "Code and data are available at: https://github.com/iJustinn/Totonto_Reported_Crimes.git"
 date: today
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "This study presents a comprehensive analysis of reported crime data in Toronto, as sourced from Open Data Toronto, to explore the trend of urban criminal patterns in Toronto over the past years. By examining reported incidents from 2014 to 2022, this paper identifies key trends in crime cases across different years and police divisions, highlighting possible key factors that may caused such results. In a word, the paper seeks to provide actionable insights for city planners, law enforcement, and community advocates, aiming to build a safer, more enjoyable urban living environment."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -18,204 +17,91 @@ bibliography: references.bib
 #| warning: false
 #| message: false
 
+library(opendatatoronto)
 library(tidyverse)
-library(palmerpenguins)
+library(ggplot2)
+library(janitor)
+library(dplyr)
+library(readr)
+
+# read the sum_by_year_data, ready for generating bar chart
+sum_by_year_data <- read_csv(here::here("outputs/data/sum_by_year_data.csv"))
+
+# read the sum_by_year_data, ready for generating bar chart
+sum_by_division_data <- read_csv(here::here("outputs/data/sum_by_division_data.csv"))
 ```
+
 
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections. 
+Public safety, as one of the most important factors to ensure a high quality life for people, is an important aspect that requires continuous evaluation and enforcement. The city of Toronto, as one of the place with most population in Canada, is not an exception to the challenges posed by crimes. This paper takes a deep dive into the extensive reported crime data provided by Open Data Toronto[@citeODT], covering the period from 2014 to 2022. The analysis is grounded in a methodical approach to identify and interpret crime trends across the past years, also within the city's diverse police divisions, offering a detailed chronicle of criminal activity over selected time span. To be more specific, this research analyzed and visualized how crime spreads out across different divisions and how it changes over the years. By dissecting the data year by year, division by division, this study uncovers patterns that could inform future urban planning and law enforcement strategies. The role of population growth, natural diseases and urban development, are considered as potential catalysts influencing these patterns.
 
-The remainder of this paper is structured as follows. @sec-data....
+Moreover, the paper aims to a little beyond simply displaying statistics. It endeavors to contextualize the numerical findings within the broader spectrum of Toronto's urban structure. The motivation for this discussion is that changes in crime rates are often associated with changes in other indicators of the city, such as education level[@citeEdu], unemployment rate[@citeUnemp], economic level[@citeEcon], and so on. By doing this, the study aims to offer useful advice that can help city officials and the police create plans to make the city safer and better for all residents. Through these ways, the paper is not just an exposition of data, but a roadmap towards a better living environment.
+
+The subsequent sections of this paper are organized to facilitate a comprehensive understanding of the study and its implications. Following this introduction, @sec-2 outlines the methodology employed in the analysis, ensuring transparency and replicability. @sec-3 presents the findings in detail, charting the trends in reported crimes over time and across Toronto's police divisions. also discusses these findings in other aspects such as: infrastructure construction, structure of the city, etc. Finally, @sec-4 concludes the paper, summarizing the key insights and finding in this research.
 
 
 
-# Data {#sec-data}
+# Data {#sec-2}
 
-Some of our data is of penguins (@fig-bills), from @palmerpenguins.
+## Source of Data
 
+## Methods
+
+Some of our data is of 
+
+
+
+
+
+
+
+# Discussion {#sec-3}
+
+## Across years
 ```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
+#| label: by_year_chart
+#| fig-cap: 2014 to 2022 Toronto Total Reported Crime Cases by Year
 #| echo: false
 
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
+# create the bar chart with y-axis showing total cases in the year and x-axis showing the year number
+ggplot(sum_by_year_data, aes(x = report_year, y = total_cases)) +
+  scale_x_continuous(breaks = sum_by_year_data$report_year) +
+  geom_bar(stat = "identity", fill = "darkgrey") +
   theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
+  labs(x = "Report Year",
+       y = "Total Cases") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-Talk more about it.
 
-And also planes (@fig-planes). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
 
+## Across divisions
 ```{r}
-#| label: fig-planes
-#| fig-cap: Relationship between wing length and width
+#| label: by_division_chart
+#| fig-cap: 2014 to 2022 Toronto Total Reported Crime Cases by Division
 #| echo: false
-#| warning: false
-#| message: false
 
-analysis_data <- read_csv(here::here("outputs/data/analysis_data.csv"))
-
-analysis_data |> 
-  ggplot(aes(x = width, y = length)) +
-  geom_point(alpha = 0.8) +
+# create the bar chart with y-axis showing total cases in the division and x-axis showing the division number
+ggplot(sum_by_division_data, aes(x = division, y = total_cases, fill = division)) +
+  #geom_bar(stat = "identity", position = position_dodge()) +
+  geom_bar(stat = "identity", fill = "darkgrey") +
   theme_minimal() +
-  labs(x = "Wing width (mm)",
-       y = "Wing length (mm)")
-```
-
-Talk way more about it. 
-
-
-
-# Model
-
-The goal of our modelling strategy is twofold. Firstly,...
-
-Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in [Appendix -@sec-model-details].
-
-## Model set-up
-
-Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.  
-
-\begin{align} 
-y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &= \alpha + \beta_i + \gamma_i\\
-\alpha &\sim \mbox{Normal}(0, 2.5) \\
-\beta &\sim \mbox{Normal}(0, 2.5) \\
-\gamma &\sim \mbox{Normal}(0, 2.5) \\
-\sigma &\sim \mbox{Exponential}(1)
-\end{align}
-
-We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
-
-
-### Model justification
-
-We expect a positive relationship between the size of the wings and time spent aloft. In particular...
-
-We can use maths by including latex between dollar signs, for instance $\theta$.
-
-
-# Results
-
-Our results are summarized in @tbl-modelresults.
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-library(rstanarm)
-
-first_model <-
-  readRDS(file = here::here("outputs/models/first_model.rds"))
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| label: tbl-modelresults
-#| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
-#| warning: false
-
-modelsummary::modelsummary(
-  list(
-    "First model" = first_model
-  ),
-  statistic = "mad",
-  fmt = 2
-)
+  labs(x = "Police Division",
+       y = "Total Cases") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
 
+# Conclusion {#sec-4}
 
-
-# Discussion
-
-## First discussion point {#sec-first-point}
-
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
-
-## Second discussion point
-
-## Third discussion point
-
-## Weaknesses and next steps
-
-Weaknesses and next steps should also be included.
-
-\newpage
-
-\appendix
-
-# Appendix {-}
-
-
-# Additional data details
-
-# Model details {#sec-model-details}
-
-## Posterior predictive check
-
-In @fig-ppcheckandposteriorvsprior-1 we implement a posterior predictive check. This shows...
-
-In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. This shows... 
-
-```{r}
-#| eval: true
-#| echo: false
-#| message: false
-#| warning: false
-#| label: fig-ppcheckandposteriorvsprior
-#| layout-ncol: 2
-#| fig-cap: "Examining how the model fits, and is affected by, the data"
-#| fig-subcap: ["Posterior prediction check", "Comparing the posterior with the prior"]
-
-pp_check(first_model) +
-  theme_classic() +
-  theme(legend.position = "bottom")
-
-posterior_vs_prior(first_model) +
-  theme_minimal() +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "bottom") +
-  coord_flip()
-```
-
-## Diagnostics
-
-@fig-stanareyouokay-1 is a trace plot. It shows... This suggests...
-
-@fig-stanareyouokay-2 is a Rhat plot. It shows... This suggests...
-
-```{r}
-#| echo: false
-#| eval: true
-#| message: false
-#| warning: false
-#| label: fig-stanareyouokay
-#| fig-cap: "Checking the convergence of the MCMC algorithm"
-#| fig-subcap: ["Trace plot", "Rhat plot"]
-#| layout-ncol: 2
-
-plot(first_model, "trace")
-
-plot(first_model, "rhat")
-```
+## General
 
 
 
-\newpage
+## Other aspects
 
 
-# References
 
 
