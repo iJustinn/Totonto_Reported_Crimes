@@ -23,11 +23,18 @@ library(ggplot2)
 library(janitor)
 library(dplyr)
 library(readr)
+library(knitr)
 
-# read the sum_by_year_data, ready for generating bar chart
+# read the cleaned_data
+raw_data <- read_csv(here::here("inputs/data/raw_data.csv"))
+
+# read the cleaned_data
+cleaned_data <- read_csv(here::here("outputs/data/cleaned_data.csv"))
+
+# read the sum_by_year_data
 sum_by_year_data <- read_csv(here::here("outputs/data/sum_by_year_data.csv"))
 
-# read the sum_by_year_data, ready for generating bar chart
+# read the sum_by_division_data
 sum_by_division_data <- read_csv(here::here("outputs/data/sum_by_division_data.csv"))
 ```
 
@@ -45,15 +52,77 @@ The subsequent sections of this paper are organized to facilitate a comprehensiv
 
 # Data {#sec-2}
 
-## Source of Data
+## Data Source
 
-## Methods
+The data used in this paper was collected by the OpenDataToronto Library [@citeODT]. The specific data set used in this research is the 'police-annual-statistical-report-reported-crimes' [@citeDataset].
 
-Some of our data is of 
+Data used in this paper was downloaded, cleaned and analyzed with the programming language R [@citeR]. Also with support of additional packages in R: `tidyverse` [@citeTidyverse], `ggplot2` [@citeGgplot], `janitor` [@citeJanitor], `dplyr` [@citeDplyr], `readr` [@citeReadr], `knitr` [@citeknitr].
 
+## Data Processing
 
+### Raw and Cleaned Data
 
+```{r}
+#| message: false
+#| echo: false
+#| label: tbl-raw_data
+#| tbl-cap: Head of Raw Toronto Reported Crimes Data
 
+head (raw_data, 6) |>
+  kable(
+    col.names = c("ID", "Reported Year", "Division", "Category", "Sub Type", "Total Case", "Cleared Case"),
+  booktabs = TRUE
+  )
+```
+
+```{r}
+#| message: false
+#| echo: false
+#| label: tbl-cleaned_data
+#| tbl-cap: Head of Cleaned Toronto Reported Crimes Data
+
+head (cleaned_data, 6) |>
+  kable(
+    col.names = c("Reported Year", "Division", "Total Case"),
+  booktabs = TRUE
+  )
+```
+
+The raw data set, first few lines shown in @tbl-raw_data, contains more than 30000 reported crime cases of Toronto from 2014 to 2022 in all police divisions, including reported crime types, case status, case id, etc. Since this research does not need that much information, thus the data was cleaned as needed. Now the cleaned data only shows the number of reported crimes cases in corresponding years and the police division each case reported to. The first few lines of the cleaned data was shown in the @tbl-cleaned_data.
+
+### Further Data Processing
+
+In order to make it easier to draw the data in the future, the cleaned data has been further processed into data with only two variables, which are used to correspond to the x-axis and y-axis when drawing.
+
+```{r}
+#| message: false
+#| echo: false
+#| label: tbl-by_year_data
+#| tbl-cap: Head of Toronto Reported Crimes Data by year
+
+head (sum_by_year_data, 6) |>
+  kable(
+    col.names = c("Reported Year","Total Cases"),
+  booktabs = TRUE
+  )
+```
+
+As mentioned earlier, this paper will first analyze the trends of reported crimes in different years. Therefore, the first further processed data will add up all data from different policy divisions in each year to form a total number of reported crimes for specific year. The head of these data was shown in @tbl-by_year_data.
+
+```{r}
+#| message: false
+#| echo: false
+#| label: tbl-by_division_data
+#| tbl-cap: Head of Toronto Reported Crimes Data by police division
+
+head (sum_by_division_data, 6) |>
+  kable(
+    col.names = c("Division","Total Cases"),
+  booktabs = TRUE
+  )
+```
+
+Then, this paper will analyze the total number of reported crimes received for different policy divisions disregard of the year. Therefore, the process of this data ignore the year and add up all the data received by each policy division in the cleaned data set to form the data set shown in @tbl-by_division_data.
 
 
 
