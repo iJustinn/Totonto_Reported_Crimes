@@ -10,14 +10,12 @@ This paper investigated a set of [data collected by Open Data Toronto](https://o
 
 The files of this research is organized in following ways:
 
--   `inputs/data`: data sources used in the analysis, the raw_data
+-   `inputs/data`: data sources used in the analysis, the raw_data and simulated data
 
--   `inputs/literature`: references used in the research paper
-
--   `outputs/data`: data sources used in the visualization including cleaned_data, sum_by_division_data and sum_by_year_data
+-   `outputs/data`: data sources used in the visualization including cleaned_data, sum_by_division_data and sum_by_year_data, etc
 
 -   `outputs/paper`: files used to generate the paper including Quarto and bibliography file and the research paper
 
 -   `outputs/charts`: preview of charts in the final research paper
 
--   `scripts`: R code used to download data, analyze data and visualize data
+-   `scripts`: R code used to simulate data, download data, analyze data and visualize data
