@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: 
+# Purpose: Simulate the reported crime data, and try to see what the data and charts may look like, before getting into the actual data set.
 # Author: Ziheng Zhong
 # Date: 18 January 2024
 # Contact: ziheng.zhong@mail.utoronto.ca
@@ -10,9 +10,6 @@
 
 #### Workspace setup ####
 # setup all libraries
-install.packages("dplyr")
-install.packages("ggplot2")
-
 library(opendatatoronto)
 library(tidyverse)
 library(ggplot2)
