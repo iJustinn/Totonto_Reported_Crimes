@@ -22,7 +22,7 @@ The files for this research are organized in the following ways:
 
 -   `llm`: records of multiple conversations with Chat GPT that assisted in building this project
 
-## Large Language Model(LLM) usage statement
+## Large Language Model (LLM) usage statement
 
 This project utilized ChatGPT to assist during the research, development, and writing processes. A record of usage can be found in the llm folder of this repository.
 
