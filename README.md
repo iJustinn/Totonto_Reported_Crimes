@@ -4,26 +4,26 @@ This study presents a comprehensive analysis of reported crime data in Toronto, 
 
 ## Paper Overview
 
-This paper investigated a set of [data collected by Open Data Toronto](https://open.toronto.ca/dataset/police-annual-statistical-report-reported-crimes/), about the Reported crimes in Toronto from 2014 to 2022. The detailed analysis was done using `R` coding, then presented as a final research paper in a `PDF` file.
+This paper investigated a [dataset collected by Open Data Toronto](https://open.toronto.ca/dataset/police-annual-statistical-report-reported-crimes/), which contains reported crimes data in Toronto from 2014 to 2022. The comprehensive analysis was conducted using `R` programming and is presented as a final research paper in `PDF` format.
 
 ## File Structure
 
-The files of this research is organized in following ways:
+The files for this research are organized in the following ways:
 
--   `inputs/data`: data sources used in the analysis, the raw_data and simulated data
+-   `inputs/data`: the raw data used for analysis
 
--   `outputs/data`: data sources used in the visualization including cleaned_data, sum_by_division_data and sum_by_year_data, etc
+-   `outputs/data`: data sources utilized for visualization, such as cleaned data, summarized data by division, and summarized data by year, etc
 
--   `outputs/paper`: files used to generate the paper including Quarto and bibliography file and the research paper
+-   `outputs/paper`: files used to generate the paper, such as Quarto and bibliography files, as well as the research paper itself
 
--   `outputs/charts`: preview of charts in the final research paper
+-   `outputs/charts`: previews of the charts included in the final research paper
 
--   `scripts`: R code used to simulate data, download data, analyze data and visualize data
+-   `scripts`: R code used for data simulation, downloading, analysis, and visualization
 
--   `llm`: multiple conversations records with Chat GPT to assist building this project
+-   `llm`: multiple conversation records with Chat GPT to assist building this project
 
 ## Large Language Model(LLM) usage statement
 
-This project did utilized Chat GPT to assist during the research, development and writing processes. Record of usage could be found in `llm` folder of this repo.
+This project utilized ChatGPT to assist during the research, development, and writing processes. A record of usage can be found in the llm folder of this repository.
 
 
