@@ -1,6 +1,6 @@
 # An Analysis of the 2014-2022 Totonto Reported Crimes
 
-University of Toronto STA302 Research Paper #1
+This study presents a comprehensive analysis of reported crime data in Toronto, as sourced from Open Data Toronto, to explore the trend of urban criminal patterns in Toronto over the past years.
 
 ## Paper Overview
 
@@ -19,3 +19,11 @@ The files of this research is organized in following ways:
 -   `outputs/charts`: preview of charts in the final research paper
 
 -   `scripts`: R code used to simulate data, download data, analyze data and visualize data
+
+-   `llm`: multiple conversations records with Chat GPT to assist building this project
+
+## Large Language Model(LLM) usage statement
+
+This project did utilized Chat GPT to assist during the research, development and writing processes. Record of usage could be found in `llm` folder of this repo.
+
+

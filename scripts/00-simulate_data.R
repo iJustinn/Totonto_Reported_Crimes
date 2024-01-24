@@ -78,7 +78,7 @@ ggplot(sum_by_division_simulated, aes(x = Division, y = Total_Cases, fill = Divi
 # save the simulated data to a csv file
 write_csv(
   x = simulated_data,
-  file = "inputs/data/simulated_data.csv"
+  file = "outputs/data/simulated_data.csv"
 )
 
 # save the simulated data to a csv file
