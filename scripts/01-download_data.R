@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Search, download and save the needed data from OpenToronto OpenData portal
+# Purpose: Search for, download, and save the necessary data from the Open Toronto OpenData portal.
 # Author: Ziheng Zhong
 # Date: 18 January 2024
 # Contact: ziheng.zhong@mail.utoronto.ca

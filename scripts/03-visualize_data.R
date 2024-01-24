@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Generate clear charts to visually display the content of data we have
+# Purpose: Generate clear charts to visually display the data we have.
 # Author: Ziheng Zhong
 # Date: 18 January 2024
 # Contact: ziheng.zhong@mail.utoronto.ca

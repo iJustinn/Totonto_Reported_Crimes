@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Cleans the raw Reported Crimes data by changing names and selecting relevant columns. Then further analyze the cleaned data to optimize them for specific charts we need in the next step.
+# Purpose: Clean the raw 'Reported Crimes' data by renaming and selecting relevant columns. Then, further analyze the cleaned data to optimize it for the specific charts needed in the next step.
 # Author: Ziheng Zhong
 # Date: 18 January 2024
 # Contact: ziheng.zhong@mail.utoronto.ca

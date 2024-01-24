@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Simulate the reported crime data, and try to see what the data and charts may look like, before getting into the actual data set.
+# Purpose: Simulate the reported crime dataset to preview what the data and charts might look like before delving into the actual dataset.
 # Author: Ziheng Zhong
 # Date: 18 January 2024
 # Contact: ziheng.zhong@mail.utoronto.ca
