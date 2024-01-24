@@ -20,7 +20,7 @@ The files for this research are organized in the following ways:
 
 -   `scripts`: R code used for data simulation, downloading, analysis, and visualization
 
--   `llm`: multiple conversation records with Chat GPT to assist building this project
+-   `llm`: records of multiple conversations with Chat GPT that assisted in building this project
 
 ## Large Language Model(LLM) usage statement
 
