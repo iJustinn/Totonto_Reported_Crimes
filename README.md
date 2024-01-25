@@ -4,7 +4,7 @@ This study presents a comprehensive analysis of reported crime data in Toronto, 
 
 ## Paper Overview
 
-This paper investigated a [dataset collected by Open Data Toronto](https://open.toronto.ca/dataset/police-annual-statistical-report-reported-crimes/), which contains reported crimes data in Toronto from 2014 to 2022. The comprehensive analysis was conducted using `R` programming and is presented as a final research paper in `PDF` format.
+This paper investigated a [dataset](https://open.toronto.ca/dataset/police-annual-statistical-report-reported-crimes/) collected by Open Data Toronto, which contains reported crimes data in Toronto from 2014 to 2022. The comprehensive analysis was conducted using `R` programming and is presented as a final research paper in `PDF` format.
 
 ## File Structure
 
