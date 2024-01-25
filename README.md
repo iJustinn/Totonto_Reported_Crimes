@@ -20,10 +20,10 @@ The files for this research are organized in the following ways:
 
 -   `scripts`: R code used for data simulation, downloading, analysis, and visualization
 
--   `llm`: records of multiple conversations with Chat GPT that assisted in building this project
+-   `inputs/llm`: records of multiple conversations with Chat GPT that assisted in building this project
 
 ## Large Language Model(LLM) usage statement
 
-This project utilized ChatGPT to assist during the research, development, and writing processes. A record of usage can be found in the llm folder of this repository.
+This project utilized ChatGPT to assist during the research, development, and writing processes. A record of usage can be found in the `inputs/llm` folder of this repository.
 
 

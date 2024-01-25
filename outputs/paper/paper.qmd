@@ -8,6 +8,8 @@ date: today
 date-format: long
 abstract: "This study presents a comprehensive analysis of reported crime data in Toronto, as sourced from Open Data Toronto, to explore the trend of urban criminal patterns in Toronto over the past years. By examining reported incidents from 2014 to 2022, this paper identifies key trends in crime cases across different years and police divisions, highlighting possible key factors that may caused such results. In a word, the paper seeks to provide actionable insights for city planners, law enforcement, and community advocates, aiming to build a safer, more enjoyable urban living environment."
 format: pdf
+toc: true
+toc-depth: 3
 number-sections: true
 bibliography: references.bib
 ---
